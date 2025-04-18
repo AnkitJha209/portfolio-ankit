@@ -1,52 +1,73 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import {
-  Globe,
-  Server,
-  Database,
-  Code2,
-  FileJson,
-  GitBranch,
-} from "lucide-react";
+import { Layers, Server, Cloud, Wrench } from "lucide-react";
 
 const skillsData = [
   {
     title: "Frontend Development",
-    description: "Creating responsive, interactive UI with React and Next.js",
-    icon: Globe,
-    skills: ["React", "Next.js", "TypeScript", "TailwindCSS", "HTML/CSS"],
+    description:
+      "Building responsive and interactive user interfaces with modern web technologies",
+    icon: Layers,
+    skills: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Redux Toolkit",
+      "TailwindCSS",
+      "HTML5/CSS3",
+      "Material UI",
+      "Shadcn UI",
+    ],
+    gradient: "from-blue-500 to-cyan-400",
   },
   {
     title: "Backend Development",
-    description: "Building robust server-side applications with Node.js",
+    description:
+      "Creating robust and scalable server-side applications and APIs",
     icon: Server,
-    skills: ["Node.js", "Express", "WebSockets", "REST APIs"],
+    skills: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Prisma ORM",
+      "REST APIs",
+      "JWT Auth",
+      "WebSockets",
+      "NextAuth"
+    ],
+    gradient: "from-purple-500 to-pink-400",
   },
   {
-    title: "Database Management",
-    description: "Designing and optimizing database solutions",
-    icon: Database,
-    skills: ["MongoDB", "PostgreSQL", "Prisma ORM"],
+    title: "Deployment & DevOps",
+    description: "Deploying and maintaining applications in cloud environments",
+    icon: Cloud,
+    skills: [
+      "AWS",
+      "Vercel",
+      "Render",
+      "Digital Ocean"
+    ],
+    gradient: "from-orange-500 to-red-400",
   },
   {
-    title: "Full Stack Applications",
-    description: "Developing end-to-end applications with MERN stack",
-    icon: Code2,
-    skills: ["MERN Stack", "Full Stack Applications"],
-  },
-  {
-    title: "API Development",
-    description: "Creating and consuming RESTful and GraphQL APIs",
-    icon: FileJson,
-    skills: ["RESTful APIs", "GraphQL", "API Integration"],
-  },
-  {
-    title: "Version Control & Deployment",
-    description: "Managing code and deploying applications",
-    icon: GitBranch,
-    skills: ["Git", "GitHub", "CI/CD", "Cloud Deployment"],
+    title: "Development Tools",
+    description:
+      "Utilizing modern development tools and practices for efficient workflow",
+    icon: Wrench,
+    skills: [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Postman",
+      "npm/yarn",
+      "Webpack",
+      "ESLint",
+      "Chrome DevTools",
+    ],
+    gradient: "from-green-500 to-emerald-400",
   },
 ];
 
@@ -77,14 +98,14 @@ export const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
             Skills & Expertise
           </h2>
-          <p className="text-gray-400">
-            My technical skills and areas of expertise span across the full
-            stack development spectrum.
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            My technical skills and areas of expertise across the full stack
+            development spectrum.
           </p>
         </motion.div>
 
@@ -93,24 +114,44 @@ export const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {skillsData.map((skill, index) => {
             const Icon = skill.icon;
             return (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="bg-black/50 border-white/10 hover:border-blue-500/50 transition-colors">
-                  <CardHeader>
-                    <Icon className="w-8 h-8 text-blue-400 mb-2" />
-                    <CardTitle>{skill.title}</CardTitle>
+                <Card className="group h-full bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 overflow-hidden">
+                  <CardHeader className="relative pb-8">
+                    <div
+                      className={`absolute inset-0 opacity-10 bg-gradient-to-br ${skill.gradient}`}
+                    />
+                    <div className="relative z-10">
+                      <div
+                        className={`w-12 h-12 rounded-lg bg-gradient-to-br ${skill.gradient} p-2.5 mb-4`}
+                      >
+                        <Icon className="w-full h-full text-white" />
+                      </div>
+                      <CardTitle className="text-2xl font-bold text-white mb-2">
+                        {skill.title}
+                      </CardTitle>
+                      <p className="text-gray-300">{skill.description}</p>
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-400 mb-4">{skill.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {skill.skills.map((item, i) => (
                         <span
                           key={i}
-                          className="px-2 py-1 text-sm bg-white/5 rounded-full"
+                          className={`px-3 py-1 text-sm rounded-full border transition-colors
+                            ${
+                              skill.gradient.includes("blue")
+                                ? "bg-blue-500/10 border-blue-500/20 text-blue-300 hover:border-blue-500/50"
+                                : skill.gradient.includes("purple")
+                                ? "bg-purple-500/10 border-purple-500/20 text-purple-300 hover:border-purple-500/50"
+                                : skill.gradient.includes("orange")
+                                ? "bg-orange-500/10 border-orange-500/20 text-orange-300 hover:border-orange-500/50"
+                                : "bg-green-500/10 border-green-500/20 text-green-300 hover:border-green-500/50"
+                            }`}
                         >
                           {item}
                         </span>
