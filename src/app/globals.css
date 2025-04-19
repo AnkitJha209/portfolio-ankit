@@ -117,7 +117,7 @@
 }
 
 /* Star animations */
-.stars,
+/* .stars,
 .stars2,
 .stars3 {
   position: fixed;
@@ -144,7 +144,7 @@
   background: transparent url("/stars3.png") repeat top center;
   z-index: 2;
   animation: move-twinkle-back 100s linear infinite;
-}
+} */
 
 @keyframes move-twinkle-back {
   from {

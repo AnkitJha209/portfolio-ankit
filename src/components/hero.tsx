@@ -8,11 +8,11 @@ const Hero = () => {
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
       {/* Animated stars background */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <div className="stars"></div>
         <div className="stars2"></div>
         <div className="stars3"></div>
-      </div>
+      </div> */}
 
       {/* Content */}
       <motion.div
