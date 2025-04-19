@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
 // Memoize the projects data to prevent unnecessary re-renders
 const projects = [

@@ -6,7 +6,7 @@ import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Github, Linkedin, Mail, Send, MapPin, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Send, MapPin } from "lucide-react";
 import Link from "next/link";
 
 // Memoize the contact form to prevent unnecessary re-renders
